@@ -16,7 +16,7 @@ interface ChatInterfaceProps {
   apiEndpoint?: string;
 }
 
-export function ChatInterface({ apiEndpoint = '/api/chat' }: ChatInterfaceProps) {
+export function ChatInterface({ apiEndpoint = 'http://127.0.0.1:8000/chat' }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +65,7 @@ export function ChatInterface({ apiEndpoint = '/api/chat' }: ChatInterfaceProps)
       
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: data.response || data.message || 'No response received',
+        content: data.response || 'No response received',
         role: 'assistant',
         timestamp: new Date(),
       };
